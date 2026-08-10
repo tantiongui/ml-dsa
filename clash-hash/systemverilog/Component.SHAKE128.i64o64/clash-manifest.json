@@ -1,0 +1,143 @@
+{
+    "components": [
+        "Component_SHAKE128_i64o64_pad",
+        "Component_SHAKE128_i64o64_spongeFSM",
+        "dut"
+    ],
+    "dependencies": {
+        "transitive": []
+    },
+    "domains": {
+        "IntelSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "System": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Synchronous",
+            "reset_polarity": "ActiveHigh"
+        }
+    },
+    "files": [
+        {
+            "name": "dut_shim.cpp",
+            "sha256": "046b64e799ae57f8a2d90ccb4fec0e199cf0e50b8329a860689ae731da0a12db"
+        },
+        {
+            "name": "dut.sdc",
+            "sha256": "7237af4c9051e2d6cb8a5cd8f4744c232557e6e6f08edfe5c8f3d5d3f4f8b973"
+        },
+        {
+            "name": "dut_types.sv",
+            "sha256": "d783907f32587aa79419a820300c4d21856e6d23c413f0032e1fdab743f860df"
+        },
+        {
+            "name": "Component_SHAKE128_i64o64_pad.sv",
+            "sha256": "5f2940d86fa71091f7809a61a5f1694a58bc7c0913cfff521a66a96d973a2b94"
+        },
+        {
+            "name": "Component_SHAKE128_i64o64_spongeFSM.sv",
+            "sha256": "9c6d63b2e88f27201bffa2117dab0fd79081107cfd9b5bb76e301482ad8f79a6"
+        },
+        {
+            "name": "dut.sv",
+            "sha256": "8d46458694755263dbff0aa2388064b1c2a089ae7a81a76bdfdceacfae87d79a"
+        }
+    ],
+    "flags": [
+        20,
+        20
+    ],
+    "hash": "0235cde67ec897339c66061f27afb9c61aa2d93526e5324c89e91ac712f4aa77",
+    "top_component": {
+        "name": "dut",
+        "ports_flat": [
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": true,
+                "name": "CLK",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "RST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "EN",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "SHAKE_TREADY",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "MSG_TDATA",
+                "type_name": "logic [65:0]",
+                "width": 66
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "MSG_TVALID",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "SHAKE_TDATA",
+                "type_name": "logic [63:0]",
+                "width": 64
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "SHAKE_TVALID",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "SHAKE_TLAST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "MSG_TREADY",
+                "type_name": "logic",
+                "width": 1
+            }
+        ]
+    },
+    "version": "unstable"
+}

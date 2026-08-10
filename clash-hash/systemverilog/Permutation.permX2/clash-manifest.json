@@ -1,0 +1,102 @@
+{
+    "components": [
+        "KeccakF1600_PermX2"
+    ],
+    "dependencies": {
+        "transitive": []
+    },
+    "domains": {
+        "IntelSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "System": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Synchronous",
+            "reset_polarity": "ActiveHigh"
+        }
+    },
+    "files": [
+        {
+            "name": "KeccakF1600_PermX2_shim.cpp",
+            "sha256": "f533997a35c93dcdcb9790bebb6e3d292f22487a61f444cf6e5f27cf7696f7cb"
+        },
+        {
+            "name": "KeccakF1600_PermX2_shim.cpp",
+            "sha256": "f533997a35c93dcdcb9790bebb6e3d292f22487a61f444cf6e5f27cf7696f7cb"
+        },
+        {
+            "name": "KeccakF1600_PermX2.sdc",
+            "sha256": "7237af4c9051e2d6cb8a5cd8f4744c232557e6e6f08edfe5c8f3d5d3f4f8b973"
+        },
+        {
+            "name": "KeccakF1600_PermX2_types.sv",
+            "sha256": "d83222bf23886bac12152c6d67d1b97b2e96039d1726460a645ae9f9be1fdf73"
+        },
+        {
+            "name": "KeccakF1600_PermX2.sv",
+            "sha256": "b87a933f4d81d318948b9045f2ecb7f0fb8dfa077bdbaa8a3736c655f6a3f33e"
+        }
+    ],
+    "flags": [
+        20,
+        20
+    ],
+    "hash": "591819bf89cb623937c8a630864cc677a274c27013b3e44d691a28484d6f8773",
+    "top_component": {
+        "name": "KeccakF1600_PermX2",
+        "ports_flat": [
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": true,
+                "name": "CLK",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "RST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "EN",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "ROUND_IDX",
+                "type_name": "logic [1604:0]",
+                "width": 1605
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "STATE_OUT",
+                "type_name": "logic [1599:0]",
+                "width": 1600
+            }
+        ]
+    },
+    "version": "unstable"
+}

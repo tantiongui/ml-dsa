@@ -1,0 +1,145 @@
+{
+    "components": [
+        "Component_SamplePolyCBD2Dev2_i264o24_keccakF1600",
+        "dut"
+    ],
+    "dependencies": {
+        "transitive": []
+    },
+    "domains": {
+        "IntelSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "System": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Synchronous",
+            "reset_polarity": "ActiveHigh"
+        }
+    },
+    "files": [
+        {
+            "name": "dut_shim.cpp",
+            "sha256": "046b64e799ae57f8a2d90ccb4fec0e199cf0e50b8329a860689ae731da0a12db"
+        },
+        {
+            "name": "dut.sdc",
+            "sha256": "7237af4c9051e2d6cb8a5cd8f4744c232557e6e6f08edfe5c8f3d5d3f4f8b973"
+        },
+        {
+            "name": "dut_types.sv",
+            "sha256": "e8213b9a6bd20142a88e231658c5d071f9c2ebdc9127b836361cb0ee729f620c"
+        },
+        {
+            "name": "Component_SamplePolyCBD2Dev2_i264o24_keccakF1600.sv",
+            "sha256": "523c697880ed793e4060c300d9f0ce53013bdbeb4bb480f89bfa5fabd8ff35ef"
+        },
+        {
+            "name": "dut.sv",
+            "sha256": "1737e856ec1cf042b001e98196791d4e249afd7be52e3e80489add7875ed85eb"
+        }
+    ],
+    "flags": [
+        20,
+        20
+    ],
+    "hash": "2fed2c59dd4be4bd00deaf2f63eb7e586173ea30c67d21009d6899c6b26e86e2",
+    "top_component": {
+        "name": "dut",
+        "ports_flat": [
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": true,
+                "name": "CLK",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "RST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "EN",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "MSG_TDATA",
+                "type_name": "logic [263:0]",
+                "width": 264
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "MSG_TVALID",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "MSG_TLAST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "DIGEST_TREADY",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "DIGEST_TDATA",
+                "type_name": "logic [23:0]",
+                "width": 24
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "DIGEST_TVALID",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "DIGEST_TLAST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "MSG_TREADY",
+                "type_name": "logic",
+                "width": 1
+            }
+        ]
+    },
+    "version": "unstable"
+}

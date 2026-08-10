@@ -1,0 +1,22 @@
+cradle:
+  multi:
+    - path: "./src"
+      config:
+        cradle:
+          stack:
+            component: "clash-hash:lib"
+    - path: "./tests"
+      config:
+        cradle:
+          stack:
+            component: "clash-hash:test:clash-hash-test"
+    - path: "./bin/Clashi.hs"
+      config:
+        cradle:
+          stack:
+            component: "clash-hash:exe:clashi"
+    - path: "./bin/Clash.hs"
+      config:
+        cradle:
+          stack:
+            component: "clash-hash:exe:clash"

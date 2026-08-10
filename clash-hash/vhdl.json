@@ -1,0 +1,45 @@
+{
+  "H256": {
+    "dir": "high_speed_core",
+    "top": "keccak",
+    "files": [
+      "keccak_globals.vhd",
+      "keccak_round_constants_gen.vhd",
+      "keccak_round.vhd",
+      "keccak_buffer.vhd",
+      "keccak.vhd"
+    ]
+  },
+  "HP0": {
+    "dir": "high_speed_core",
+    "top": "keccak_round",
+    "files": [
+      "keccak_globals.vhd",
+      "keccak_round.vhd"
+    ]
+  },
+  "HTheta": {
+    "dir": "high_speed_core",
+    "top": "keccak_round_theta",
+    "files": [
+      "keccak_globals.vhd",
+      "keccak_round_theta.vhd"
+    ]
+  },
+  "HTheta2": {
+    "dir": "high_speed_core",
+    "top": "keccak_round_theta_improved",
+    "files": [
+      "keccak_globals.vhd",
+      "keccak_round_theta_improved.vhd"
+    ]
+  },
+  "HRoundWithoutTheta": {
+    "dir": "high_speed_core",
+    "top": "keccak_round_without_theta",
+    "files": [
+      "keccak_globals.vhd",
+      "keccak_round_without_theta.vhd"
+    ]
+  }
+}

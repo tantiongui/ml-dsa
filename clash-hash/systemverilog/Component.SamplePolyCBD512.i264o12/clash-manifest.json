@@ -1,0 +1,117 @@
+{
+    "components": [
+        "Component_SamplePolyCBD512_i264o12_keccakF1600",
+        "Component_SamplePolyCBD512"
+    ],
+    "dependencies": {
+        "transitive": []
+    },
+    "domains": {
+        "IntelSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "System": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Synchronous",
+            "reset_polarity": "ActiveHigh"
+        }
+    },
+    "files": [
+        {
+            "name": "Component_SamplePolyCBD512_shim.cpp",
+            "sha256": "ca328e7843bcc6bc3d0d9d75a7a3662041172fef8bd31905a73baca5683d8d40"
+        },
+        {
+            "name": "Component_SamplePolyCBD512.sdc",
+            "sha256": "7237af4c9051e2d6cb8a5cd8f4744c232557e6e6f08edfe5c8f3d5d3f4f8b973"
+        },
+        {
+            "name": "Component_SamplePolyCBD512_types.sv",
+            "sha256": "e894191262a6264ab6f580891a84ff86eb2500b11398fe238b2405694537c0a3"
+        },
+        {
+            "name": "Component_SamplePolyCBD512_i264o12_keccakF1600.sv",
+            "sha256": "8749bcacaf0145c4eb93084517854fba7425a124be39d7f7a6619b2c0dcba40a"
+        },
+        {
+            "name": "Component_SamplePolyCBD512.sv",
+            "sha256": "d5cf2c677a1716e2d142122535364992784ff9e76c36fdc6f2ac814e6ef0a47e"
+        }
+    ],
+    "flags": [
+        20,
+        20
+    ],
+    "hash": "cec4f1be7aaa000802fba653b0e7f07370c9c115bea6b391eacb07b04d3dfe24",
+    "top_component": {
+        "name": "Component_SamplePolyCBD512",
+        "ports_flat": [
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": true,
+                "name": "CLK",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "RST",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "EN",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "MSG_33B",
+                "type_name": "logic [263:0]",
+                "width": 264
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "DIGEST_TREADY",
+                "type_name": "logic",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "DIGEST_TDATA",
+                "type_name": "logic [13:0]",
+                "width": 14
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "DIGEST_TVALID",
+                "type_name": "logic",
+                "width": 1
+            }
+        ]
+    },
+    "version": "unstable"
+}
