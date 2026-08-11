@@ -8,41 +8,42 @@ coeffFromHalfByte b eta
   | eta == 4 && b < 9  = Just (4 - b)
   | otherwise          = Nothing
 
--- Update list element at index
-updateAt :: Int -> a -> [a] -> [a]
-updateAt _ _ [] = []
-updateAt 0 x (_:ys) = x : ys
-updateAt n x (y:ys) = y : updateAt (n - 1) x ys
+-- Set list element at specific 0-based index
+setIndex :: Int -> a -> [a] -> [a]
+setIndex _ _ [] = []
+setIndex 0 x (_:ys) = x : ys
+setIndex n x (y:ys) = y : setIndex (n - 1) x ys
 
--- Rejection sampling: get random j <= i
-getValidJ :: Int -> [Int] -> (Int, [Int])
-getValidJ _ [] = error "getValidJ: random byte stream exhausted"
-getValidJ i (r:rs)
-  | r <= i    = (r, rs)
-  | otherwise = getValidJ i rs
+-- Rejection sampling: find random byte j <= i
+findValidByte :: [Int] -> Int -> (Int, [Int])
+findValidByte [] _ = error "findValidByte: random byte stream exhausted"
+findValidByte (b:bs) i
+  | b <= i    = (b, bs)
+  | otherwise = findValidByte bs i
 
--- Fisher-Yates swap step
-step :: Int -> Int -> Int -> [Int] -> [Int]
-step i j s c =
-  let c_j = c !! j
-      c'  = updateAt i c_j c
-  in updateAt j s c'
+-- Update polynomial coefficients (swap c[i] <- c[j], c[j] <- signVal)
+updatePoly :: Int -> Int -> Int -> Int -> [Int] -> [Int]
+updatePoly i j cj signVal c
+  | j == i    = setIndex i signVal c
+  | otherwise = setIndex j signVal (setIndex i cj c)
 
 -- Loop from (256 - tau) to 255
 loop :: Int -> [Int] -> [Int] -> [Int] -> [Int]
-loop i signs rands c
+loop i signs bs c
   | i > 255   = c
   | otherwise =
-      let (s:sNext) = signs
-          (j, randsNext) = getValidJ i rands
-          cNext = step i j s c
-      in loop (i + 1) sNext randsNext cNext
+      let (signVal:signsNext) = signs
+          (j, bsNext) = findValidByte bs i
+          cj = c !! j
+          cNext = updatePoly i j cj signVal c
+      in loop (i + 1) signsNext bsNext cNext
 
 -- Algorithm 29: SampleInBall
 -- Generate polynomial with tau non-zero (+1/-1) coefficients
 sampleInBall :: Int -> [Int] -> [Int] -> [Int]
-sampleInBall tau signs rands =
-  let startI = 256 - tau
-      c0     = replicate 256 0
-  in loop startI signs rands c0
+sampleInBall tau signs bs =
+  let startI   = 256 - tau
+      initPoly = replicate 256 0
+  in loop startI signs bs initPoly
+
 
