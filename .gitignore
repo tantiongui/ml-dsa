@@ -5,17 +5,10 @@
 *.dyn_o
 *.exe
 
-# Root level non-project / documentation files
-/AGENT_HANDOVER_LOG.md
-/ghcup-bootstrap.ps1
-/HelloWorld.hs
-/NIST.FIPS.204.md
-/SampleInBall_Architecture_Guide.html
-/SampleInBall_Visual_Presentation.html
+# Miscellaneous non-project files
+misc/
 
-# IDE / Editor files
+# IDE / Editor / OS files
 .vscode/
-
-# OS generated files
 Thumbs.db
 Desktop.ini
