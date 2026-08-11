@@ -1,7 +1,5 @@
 # ML-DSA SampleInBall
 
-Overview of component implementation completed this week:
-
 - **`SampleInBall.hs` (Root Directory)**
   - Pure Haskell reference implementation for NIST FIPS 204 algorithms (Algorithm 15 `CoeffFromHalfByte` & Algorithm 29 `SampleInBall`).
 
