@@ -4,6 +4,7 @@
 *.dyn_hi
 *.dyn_o
 *.exe
+.stack-work/
 
 # Miscellaneous non-project files
 misc/
