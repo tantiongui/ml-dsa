@@ -7,9 +7,7 @@
 .stack-work/
 
 # Miscellaneous non-project files
-misc/*
-!misc/AGENT_HANDOVER_LOG.md
-!misc/VerifyClashSampleInBall.hs
+misc/
 
 # IDE / Editor / OS files
 .vscode/

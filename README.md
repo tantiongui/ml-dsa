@@ -32,7 +32,7 @@ stack exec clash -- --verilog src/SampleInBall.hs
 Run standalone verification suite (6 edge-case vectors + 30 pseudo-random stream tests):
 ```powershell
 cd my-clash-project
-stack exec clashi -- ../misc/VerifyClashSampleInBall.hs -e "main"
+stack exec clashi -- tests/VerifySampleInBall.hs -e "main"
 ```
 
 Quick assertion check in REPL:
