@@ -26,6 +26,7 @@ import Test.SamplePolyCBD3 qualified
 import Test.Reference.SHA3 qualified
 import Test.Reference.SHAKE256 qualified
 import Test.Reference.SampleInBall qualified
+import Test.SampleInBall qualified
 import Test.Tasty
 import Test.Tasty.Hspec
 import Prelude
@@ -61,6 +62,7 @@ main = do
   refSha3Tests <- testSpec "Reference SHA3-256" Test.Reference.SHA3.spec
   refShake256Tests <- testSpec "Reference SHAKE-256" Test.Reference.SHAKE256.spec
   refSampleInBallTests <- testSpec "Reference SampleInBall" Test.Reference.SampleInBall.spec
+  sampleInBallHwTests <- testSpec "Hardware SampleInBall" Test.SampleInBall.spec
 
   defaultMain $
     localOption (mkTimeout 60000000) $  -- 60 second timeout per test
@@ -92,6 +94,7 @@ main = do
         refSha3Tests,
         refShake256Tests,
         refSampleInBallTests,
+        sampleInBallHwTests,
         snO24L2Tests,
         snO24L4Tests,
         snO24L6Tests,

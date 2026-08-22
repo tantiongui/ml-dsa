@@ -53,8 +53,12 @@ def _process_library(process: str) -> Path:
     return lib_path
 
 
-def _validate_environment() -> None:
-    """Ensure required tools are available before running STA."""
+def _validate_environment() -> bool:
+    """Ensure required tools are available before running STA.
+
+    Returns True if all tools (including OpenSTA) are available.
+    Returns False if OpenSTA is missing (yosys absence still raises).
+    """
     yosys = shutil.which("yosys")
     if yosys is None:
         raise StaError("yosys not found. Run inside the 'nix develop' environment or install yosys.")
@@ -64,7 +68,10 @@ def _validate_environment() -> None:
     _print(f"✓ Yosys found: {first_line}")
 
     if shutil.which("sta") is None:
-        raise StaError("OpenSTA binary 'sta' not found. Ensure it is installed in the environment.")
+        _print("✗ OpenSTA binary 'sta' not found. Ensure it is installed in the environment.")
+        _print("  Timing analysis will be skipped; area metrics are still available.")
+        return False
+    return True
 
 
 def load_simple_aliases(path: Path, required: bool = False) -> dict[str, str]:
@@ -458,10 +465,26 @@ def main(argv: list[str] | None = None) -> int:
         _print(f"  Target: {args.target}")
 
         lib_path = _process_library(args.process)
-        _validate_environment()
+        sta_available = _validate_environment()
         paths = _setup_paths(args.process, args.target)
         top_module = paths["top_module"]
         _print(f"  Resolved top module: {top_module}")
+
+        if not sta_available:
+            # Write a stub summary so bench.py can complete with area-only metrics
+            summary_path = paths["output"] / "reports" / "summary.rpt"
+            summary_path.parent.mkdir(parents=True, exist_ok=True)
+            summary_path.write_text(
+                "# STA skipped: OpenSTA binary not found\n"
+                "Critical Path: N/A\n"
+                "WNS (max): N/A\n"
+                "TNS (max): N/A\n"
+                "Worst Slack: N/A\n",
+                encoding="utf-8",
+            )
+            _print(f"Stub summary written to: {summary_path}")
+            return 0
+
         _show_configuration(args.process, top_module, lib_path, paths)
         return _run_sta(args.process, lib_path, paths)
     except StaError as exc:

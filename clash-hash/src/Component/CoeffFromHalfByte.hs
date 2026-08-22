@@ -1,4 +1,16 @@
-module CoeffFromHalfByte where
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+
+-- |
+-- Module      : Component.CoeffFromHalfByte
+-- Description : Hardware implementation of NIST FIPS 204 CoeffFromHalfByte (Algorithm 15)
+-- License     : MIT
+-- Standard    : NIST FIPS 204 (ML-DSA), Algorithm 15
+module Component.CoeffFromHalfByte
+  ( coeffFromHalfByte,
+    topEntity,
+  )
+where
 
 import Clash.Prelude
 
@@ -12,6 +24,19 @@ coeffFromHalfByte b eta
   | eta == 4 && b < 9  = Just (4 - fromIntegral b)
   | otherwise          = Nothing
 
+{-# ANN
+  topEntity
+  ( Synthesize
+      { t_name = "Component_CoeffFromHalfByte",
+        t_inputs =
+          [ PortName "B",
+            PortName "ETA"
+          ],
+        t_output = PortName "COEFF"
+      }
+  )
+  #-}
+{-# NOINLINE topEntity #-}
 -- | Top Entity for Verilog / SystemVerilog Synthesis
 topEntity
   :: Unsigned 4

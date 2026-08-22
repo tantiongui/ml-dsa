@@ -431,17 +431,23 @@ def build_yosys_commands(
     liberty: Path,
     abc_constraints: Path,
 ) -> list[str]:
+    def q(path: Path | str) -> str:
+        p_str = path.as_posix() if isinstance(path, Path) else str(path).replace("\\", "/")
+        if " " in p_str:
+            return f'"{p_str}"'
+        return p_str
+
     def read_step(path: Path) -> str:
-        quoted = shlex.quote(str(path))
+        quoted = q(path)
         if path.suffix.lower() == ".sv":
             return f"read_verilog -sv {quoted}"
         return f"read_verilog {quoted}"
 
     read_cmds = [read_step(p) for p in verilog_files]
-    liberty_q = shlex.quote(str(liberty))
-    netlist_q = shlex.quote(str(netlist_path))
-    abc_constraints_q = shlex.quote(str(abc_constraints))
-    top_q = shlex.quote(top)
+    liberty_q = q(liberty)
+    netlist_q = q(netlist_path)
+    abc_constraints_q = q(abc_constraints)
+    top_q = q(top)
 
     commands = [
         *read_cmds,
@@ -464,6 +470,8 @@ def run_yosys(commands: list[str]) -> subprocess.CompletedProcess[str]:
         ["yosys", "-p", script],
         cwd=PROJECT_ROOT,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         capture_output=True,
         check=False,
     )

@@ -4,7 +4,23 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module SampleInBall where
+-- |
+-- Module      : Component.SampleInBall
+-- Description : Hardware implementation of NIST FIPS 204 SampleInBall (Algorithm 29)
+-- License     : MIT
+-- Standard    : NIST FIPS 204 (ML-DSA), Algorithm 29
+module Component.SampleInBall
+  ( Input (..),
+    Output (..),
+    State (..),
+    sampleInBallT,
+    sampleInBall,
+    topEntity,
+    goldenSampleInBall,
+    simSampleInBall,
+    verifySampleInBall,
+  )
+where
 
 import Clash.Prelude
 import qualified Prelude as P
@@ -78,6 +94,34 @@ sampleInBall
   -> Signal dom Output
 sampleInBall = mealy sampleInBallT Idle
 
+{-# ANN
+  topEntity
+  ( Synthesize
+      { t_name = "Component_SampleInBall",
+        t_inputs =
+          [ PortName "CLK",
+            PortName "RST",
+            PortName "EN",
+            PortProduct
+              ""
+              [ PortName "START",
+                PortName "BYTE_IN",
+                PortName "BYTE_VALID",
+                PortName "SIGN_BIT_IN"
+              ]
+          ],
+        t_output =
+          PortProduct
+            ""
+            [ PortName "BUSY",
+              PortName "DONE",
+              PortName "NEED_BYTE",
+              PortName "POLY_OUT"
+            ]
+      }
+  )
+  #-}
+{-# NOINLINE topEntity #-}
 -- | Top Entity for Verilog / SystemVerilog compilation
 topEntity
   :: Clock System
@@ -107,14 +151,6 @@ goldenSampleInBall signs bytes = go 217 signs bytes (repeat 0)
       | otherwise = go i (s:ss) bs poly -- Rejection: retry same i and s with next byte
       where j = fromIntegral b
 
--- | Deterministic test byte sequence generation (39 valid + some rejected bytes)
-testBytes :: [Unsigned 8]
-testBytes = P.concat [ [fromIntegral (k `P.mod` (217 + k)), 250] | k <- [0..38] ]
-
--- | Deterministic test sign bits (39 bits)
-testSigns :: [Bool]
-testSigns = [ k `P.mod` 2 == 0 | k <- [0..38] ]
-
 -- | Cycle-by-cycle simulation driver for Clash FSM
 simSampleInBall :: [Bool] -> [Unsigned 8] -> Vec 256 (Signed 24)
 simSampleInBall signs0 bytes0 = go Idle (Input True 0 False False) signs0 bytes0
@@ -141,6 +177,8 @@ simSampleInBall signs0 bytes0 = go Idle (Input True 0 False False) signs0 bytes0
 -- | Verification assertion: True if Clash FSM output matches Golden Model 100%
 verifySampleInBall :: Bool
 verifySampleInBall =
-  let goldenResult = goldenSampleInBall testSigns testBytes
+  let testBytes = P.concat [ [fromIntegral (k `P.mod` (217 + k)), 250] | k <- [0..38 :: Int] ]
+      testSigns = [ (k `P.mod` 2) == 0 | k <- [0..38 :: Int] ]
+      goldenResult = goldenSampleInBall testSigns testBytes
       fsmResult    = simSampleInBall testSigns testBytes
   in goldenResult == fsmResult

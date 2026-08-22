@@ -63,25 +63,29 @@ def run_cmd(cmd, label, timeout=3600):
         cmd,
         cwd=PROJECT_ROOT,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         capture_output=True,
         timeout=timeout,
     )
     if result.returncode != 0:
-        output = result.stdout + result.stderr
+        output = (result.stdout or "") + (result.stderr or "")
         if "Relocation target for PAGE21 out of range" in output:
             result = subprocess.run(
                 cmd,
                 cwd=PROJECT_ROOT,
                 text=True,
+                encoding="utf-8",
+                errors="replace",
                 capture_output=True,
                 timeout=timeout,
             )
-            output = result.stdout + result.stderr
+            output = (result.stdout or "") + (result.stderr or "")
         if result.returncode != 0:
             print(output, file=sys.stderr)
             sys.exit(f"[bench] ERROR: {label} failed (exit {result.returncode})")
         return output
-    return result.stdout + result.stderr
+    return (result.stdout or "") + (result.stderr or "")
 
 
 def output_label(target: str) -> str:
@@ -284,6 +288,9 @@ def collect_stack_build_artifacts() -> list[Path]:
         ".stack-work/dist/*/ghc-*/build/libHSclash-hash*.so",
         ".stack-work/dist/*/ghc-*/build/libHSclash-hash*.dylib",
         ".stack-work/dist/*/ghc-*/package.conf.inplace/clash-hash-*.conf",
+        ".stack-work/dist/*/build/libHSclash-hash*.a",
+        ".stack-work/dist/*/build/libHSclash-hash*.lib",
+        ".stack-work/dist/*/package.conf.inplace/clash-hash-*.conf",
     ]
     paths: list[Path] = []
     for pattern in patterns:
@@ -375,10 +382,7 @@ def run_synth(target: str):
         synth_target = ALIASES.get(target, target)
     run_cmd(
         [
-            "nix",
-            "develop",
-            "--command",
-            "python3",
+            sys.executable,
             "scripts/synth.py",
             target,
         ],
@@ -619,10 +623,12 @@ def run_sta(target: str):
         ],
         cwd=PROJECT_ROOT,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         capture_output=True,
         timeout=3600,
     )
-    output = result.stdout + result.stderr
+    output = (result.stdout or "") + (result.stderr or "")
     if result.returncode != 0:
         print(output, file=sys.stderr)
         sys.exit(f"[bench] ERROR: STA for {target} failed (exit {result.returncode})")
