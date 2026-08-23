@@ -26,7 +26,7 @@ stack test
 ```
 
 ### 2. Verilog Synthesis
-Generates Verilog/SystemVerilog from Clash and performs logic synthesis via Yosys (mapped to Nangate45):
+Generates Verilog/SystemVerilog from Clash and performs logic synthesis:
 ```bash
 # Synthesize SampleInBall
 python3 scripts/synth.py SampleInBall
@@ -36,14 +36,12 @@ python3 scripts/synth.py CoeffFromHalfByte
 ```
 
 ### 3. Run Benchmark (Synthesis + OpenSTA)
-Runs the full pipeline (Build -> HDL generation -> Yosys synthesis -> OpenSTA timing analysis):
+Runs the full pipeline:
 ```bash
 python3 scripts/bench.py SampleInBall
 ```
 
 ## Benchmark Results
-
-Target standard cell library: `Nangate45` (typical corner, nominal clock period: 5.0 ns).
 
 | Module | Cells | Area ($\mu\text{m}^2$) | Critical Path (ns) | Worst Slack (ns) | WNS / TNS (ns) |
 | :--- | ---: | ---: | ---: | ---: | ---: |
