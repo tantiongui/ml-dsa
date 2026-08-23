@@ -2,45 +2,49 @@
 
 Pure Haskell reference models and Clash HDL hardware implementations for NIST FIPS 204 (ML-DSA) algorithms.
 
-## Key Clash HDL Modules
-
-- **CoeffFromHalfByte (Algorithm 15)**
-  - Source: [my-clash-project/src/CoeffFromHalfByte.hs](file:///c:/Users/capta/Documents/2026ete/ml_dsa_2/my-clash-project/src/CoeffFromHalfByte.hs)
-  - Synthesized Verilog: [my-clash-project/verilog/CoeffFromHalfByte.topEntity/topEntity.v](file:///c:/Users/capta/Documents/2026ete/ml_dsa_2/my-clash-project/verilog/CoeffFromHalfByte.topEntity/topEntity.v)
-  - Summary: Converts 4-bit nibbles to polynomial coefficients in range [-\eta, \eta] with rejection sampling for ML-DSA-44, ML-DSA-65, and ML-DSA-87.
+## Key Modules
 
 - **SampleInBall (Algorithm 29)**
-  - Source: [my-clash-project/src/SampleInBall.hs](file:///c:/Users/capta/Documents/2026ete/ml_dsa_2/my-clash-project/src/SampleInBall.hs)
-  - Synthesized Verilog: [my-clash-project/verilog/SampleInBall.topEntity/topEntity.v](file:///c:/Users/capta/Documents/2026ete/ml_dsa_2/my-clash-project/verilog/SampleInBall.topEntity/topEntity.v)
-  - Summary: Generates 256-degree polynomials with Hamming weight \tau = 39 (\pm 1 non-zero coefficients) using a cycle-accurate Mealy state machine supporting single-cycle Fisher-Yates coefficient swaps and non-blocking rejection sampling. Fully verified against the golden reference model.
+  - Source: `clash-hash/src/Component/SampleInBall.hs`
+  - Summary: Generates 256-degree polynomials with Hamming weight $\tau = 39$ ($\pm 1$ non-zero coefficients) using a Mealy state machine supporting single-cycle Fisher-Yates coefficient swaps and non-blocking rejection sampling.
+- **CoeffFromHalfByte (Algorithm 15)**
+  - Source: `clash-hash/src/Component/CoeffFromHalfByte.hs`
+  - Summary: Converts 4-bit nibbles to polynomial coefficients in range $[-\eta, \eta]$ with rejection sampling for ML-DSA-44, 65, and 87.
 
-## Build and Synthesis
+## Getting Started
 
-Build project (Windows PowerShell):
-```powershell
-cd my-clash-project
-chcp 65001; $OutputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; stack build
+All development and benchmarking scripts are located under `clash-hash/`:
+
+```bash
+cd clash-hash
+export PATH="$HOME/.ghcup/bin:$PATH"
 ```
 
-Synthesize Verilog:
-```powershell
-stack exec clash -- --verilog src/SampleInBall.hs
-```
-
-## Verification & Testing Workflow
-
-Run standalone verification suite (6 edge-case vectors + 30 pseudo-random stream tests):
-```powershell
-cd my-clash-project
-stack exec clashi -- tests/VerifySampleInBall.hs -e "main"
-```
-
-Quick assertion check in REPL:
-```powershell
-stack exec clashi -- src/SampleInBall.hs -e "verifySampleInBall"
-```
-
-Run test suite:
-```powershell
+### 1. Run Tests
+```bash
 stack test
 ```
+
+### 2. Verilog Synthesis
+Generates Verilog/SystemVerilog from Clash and performs logic synthesis via Yosys (mapped to Nangate45):
+```bash
+# Synthesize SampleInBall
+python3 scripts/synth.py SampleInBall
+
+# Synthesize CoeffFromHalfByte
+python3 scripts/synth.py CoeffFromHalfByte
+```
+
+### 3. Run Benchmark (Synthesis + OpenSTA)
+Runs the full pipeline (Build -> HDL generation -> Yosys synthesis -> OpenSTA timing analysis):
+```bash
+python3 scripts/bench.py SampleInBall
+```
+
+## Benchmark Results
+
+Target standard cell library: `Nangate45` (typical corner, nominal clock period: 5.0 ns).
+
+| Module | Cells | Area ($\mu\text{m}^2$) | Critical Path (ns) | Worst Slack (ns) | WNS / TNS (ns) |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| `SampleInBall` | 97,660 | 124,092.724 | 0.76 | 4.20 | 0.000 / 0.000 |
