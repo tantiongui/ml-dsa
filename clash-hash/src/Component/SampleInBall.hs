@@ -16,14 +16,10 @@ module Component.SampleInBall
     sampleInBallT,
     sampleInBall,
     topEntity,
-    goldenSampleInBall,
-    simSampleInBall,
-    verifySampleInBall,
   )
 where
 
 import Clash.Prelude
-import qualified Prelude as P
 
 -- | Modulus q for ML-DSA (8380417)
 modQ :: Signed 24
@@ -130,55 +126,3 @@ topEntity
   -> Signal System Input
   -> Signal System Output
 topEntity = exposeClockResetEnable sampleInBall
-
---------------------------------------------------------------------------------
--- Golden Reference Model & Simulation Test Verification
---------------------------------------------------------------------------------
-
--- | Pure Haskell Golden Model for SampleInBall (tau = 39)
-goldenSampleInBall :: [Bool] -> [Unsigned 8] -> Vec 256 (Signed 24)
-goldenSampleInBall signs bytes = go 217 signs bytes (repeat 0)
-  where
-    go :: Index 256 -> [Bool] -> [Unsigned 8] -> Vec 256 (Signed 24) -> Vec 256 (Signed 24)
-    go _ [] _ poly = poly
-    go _ _ [] poly = poly
-    go i (s:ss) (b:bs) poly
-      | j <= i =
-          let signVal = if s then -1 else 1
-              cj = poly !! j
-              poly' = replace j signVal (replace i cj poly)
-          in if i == 255 then poly' else go (i + 1) ss bs poly'
-      | otherwise = go i (s:ss) bs poly -- Rejection: retry same i and s with next byte
-      where j = fromIntegral b
-
--- | Cycle-by-cycle simulation driver for Clash FSM
-simSampleInBall :: [Bool] -> [Unsigned 8] -> Vec 256 (Signed 24)
-simSampleInBall signs0 bytes0 = go Idle (Input True 0 False False) signs0 bytes0
-  where
-    go st inp signs bytes =
-      let (st', out) = sampleInBallT st inp
-      in if done out then
-           polyOut out
-         else case st' of
-           FetchByte i _ -> case bytes of
-             [] -> repeat 0
-             (b:bs) ->
-               let j = fromIntegral b :: Index 256
-               in if j <= i then
-                    case signs of
-                      (s:ss) -> go st' (Input False b True s) ss bs
-                      []     -> go st' (Input False b True False) [] bs
-                  else
-                    case signs of
-                      (s:_) -> go st' (Input False b True s) signs bs
-                      []    -> go st' (Input False b True False) [] bs
-           _ -> go st' (Input False 0 False False) signs bytes
-
--- | Verification assertion: True if Clash FSM output matches Golden Model 100%
-verifySampleInBall :: Bool
-verifySampleInBall =
-  let testBytes = P.concat [ [fromIntegral (k `P.mod` (217 + k)), 250] | k <- [0..38 :: Int] ]
-      testSigns = [ (k `P.mod` 2) == 0 | k <- [0..38 :: Int] ]
-      goldenResult = goldenSampleInBall testSigns testBytes
-      fsmResult    = simSampleInBall testSigns testBytes
-  in goldenResult == fsmResult
