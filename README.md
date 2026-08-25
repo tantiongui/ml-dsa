@@ -35,7 +35,7 @@ python3 scripts/synth.py SampleInBall
 python3 scripts/synth.py CoeffFromHalfByte
 ```
 
-### 3. Run Benchmark (Synthesis + OpenSTA)
+### 3. Run Benchmark
 Runs the full pipeline:
 ```bash
 python3 scripts/bench.py SampleInBall
