@@ -38,14 +38,14 @@ data Output = Output
   { busy      :: Bool
   , done      :: Bool
   , needByte  :: Bool
-  , polyOut   :: Vec 256 (Signed 24)
+  , polyOut   :: Vec 256 (BitVector 2)
   } deriving (Generic, NFDataX, Show, Eq)
 
--- | Internal FSM State
+-- | Internal FSM State storing compact 2-bit coefficients (512 bits total)
 data State
   = Idle
-  | FetchByte (Index 256) (Vec 256 (Signed 24))
-  | Done (Vec 256 (Signed 24))
+  | FetchByte (Index 256) (Vec 256 (BitVector 2))
+  | Done (Vec 256 (BitVector 2))
   deriving (Generic, NFDataX, Show, Eq)
 
 -- | Mealy transition function for SampleInBall (Algorithm 29).
@@ -63,7 +63,8 @@ sampleInBallT state Input{..} = case state of
       let j = fromIntegral byteIn :: Index 256
       in if j <= i then
         -- Valid byte j <= i: read poly!!j, swap c[i] <- c[j], c[j] <- signVal
-        let signVal = if signBitIn then -1 else 1
+        -- signBitIn: True -> -1 (2'b11 = 3), False -> +1 (2'b01 = 1)
+        let signVal = if signBitIn then 3 else 1 :: BitVector 2
             cj = poly !! j
             poly' = replace j signVal (replace i cj poly)
         in if i == 255 then

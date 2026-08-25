@@ -45,4 +45,4 @@ python3 scripts/bench.py SampleInBall
 
 | Module | Cells | Area ($\mu\text{m}^2$) | Critical Path (ns) | Worst Slack (ns) | WNS / TNS (ns) |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| `SampleInBall` | 97,660 | 124,092.724 | 0.76 | 4.20 | 0.000 / 0.000 |
+| `SampleInBall` | 7,406 | 9,630.264 | 0.81 | 4.15 | 0.000 / 0.000 |
