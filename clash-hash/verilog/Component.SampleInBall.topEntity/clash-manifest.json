@@ -1,0 +1,140 @@
+{
+    "components": [
+        "Component_SampleInBall"
+    ],
+    "dependencies": {
+        "transitive": []
+    },
+    "domains": {
+        "IntelSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "System": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Asynchronous",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "active_edge": "Rising",
+            "init_behavior": "Defined",
+            "period": 10000,
+            "reset_kind": "Synchronous",
+            "reset_polarity": "ActiveHigh"
+        }
+    },
+    "files": [
+        {
+            "name": "Component_SampleInBall_shim.cpp",
+            "sha256": "29b6d5d0d096fc73aab5843569afae1835fe9e795af48ca2cd7ff3354f69d9c5"
+        },
+        {
+            "name": "Component_SampleInBall_shim.cpp",
+            "sha256": "29b6d5d0d096fc73aab5843569afae1835fe9e795af48ca2cd7ff3354f69d9c5"
+        },
+        {
+            "name": "Component_SampleInBall.sdc",
+            "sha256": "7237af4c9051e2d6cb8a5cd8f4744c232557e6e6f08edfe5c8f3d5d3f4f8b973"
+        },
+        {
+            "name": "Component_SampleInBall.v",
+            "sha256": "cba86ab724acde98623f1242bd450273466b6c32f9f2413499226d62c410f9b2"
+        }
+    ],
+    "flags": [
+        20,
+        20
+    ],
+    "hash": "0c0d798dde5753b5d6d2c13b84a72479e2cf6c3f33874b53adac0725edc1edb4",
+    "top_component": {
+        "name": "Component_SampleInBall",
+        "ports_flat": [
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": true,
+                "name": "CLK",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "RST",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "domain": "System",
+                "is_clock": false,
+                "name": "EN",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "START",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "STREAM_IN_TDATA",
+                "type_name": "[63:0]",
+                "width": 64
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "STREAM_IN_TVALID",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "STREAM_IN_TLAST",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "BUSY",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "DONE",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "TREADY",
+                "type_name": "",
+                "width": 1
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "POLY_OUT",
+                "type_name": "[511:0]",
+                "width": 512
+            }
+        ]
+    },
+    "version": "unstable"
+}
