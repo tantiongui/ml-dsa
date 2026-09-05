@@ -14,14 +14,15 @@ package Component_SampleInBall_types;
     logic r_Output_sel0;
     logic r_Output_sel1;
     logic r_Output_sel2;
-    logic[0:255][1:0] r_Output_sel3;
+    logic r_Output_sel3;
+    logic[0:255][1:0] r_Output_sel4;
   } r_Output;
-  typedef struct packed {
-    logic [653:0] Tuple2_sel0;
-    r_Output Tuple2_sel1;
-  } Tuple2;
   typedef logic [7:0] array_of_8_logic_vector_8 [0:7];
   typedef logic [0:0] array_of_64_logic_vector_1 [0:63];
+  typedef struct packed {
+    logic [661:0] Tuple2_sel0;
+    r_Output Tuple2_sel1;
+  } Tuple2;
   function automatic logic [0:63][0:0] array_of_64_logic_to_lv(array_of_64_logic i);
     for (int n = 0; n < 64; n=n+1)
       array_of_64_logic_to_lv[n] = i[n];

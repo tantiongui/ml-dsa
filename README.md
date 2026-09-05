@@ -6,7 +6,7 @@ Pure Haskell reference models and Clash HDL hardware implementations for NIST FI
 
 - **SampleInBall (Algorithm 29)**
   - Source: `clash-hash/src/Component/SampleInBall.hs`
-  - Summary: Generates 256-degree polynomials with Hamming weight $\tau = 39$ ($\pm 1$ non-zero coefficients) using a Mealy state machine supporting single-cycle Fisher-Yates coefficient swaps and non-blocking rejection sampling.
+  - Summary: Generates 256-degree polynomials with Hamming weight $\tau = 39$ ($\pm 1$ non-zero coefficients) using a Mealy state machine. Conforms to NIST FIPS 204 Appendix C loop bounds with cutoff timeout and intermediate state zeroization.
 - **CoeffFromHalfByte (Algorithm 15)**
   - Source: `clash-hash/src/Component/CoeffFromHalfByte.hs`
   - Summary: Converts 4-bit nibbles to polynomial coefficients in range $[-\eta, \eta]$ with rejection sampling for ML-DSA-44, 65, and 87.
@@ -36,13 +36,24 @@ python3 scripts/synth.py CoeffFromHalfByte
 ```
 
 ### 3. Run Benchmark
-Runs the full pipeline:
+Runs the full pipeline (HDL gen, Yosys synthesis, OpenSTA timing):
 ```bash
 python3 scripts/bench.py SampleInBall
 ```
 
+### 4. Loop Bound & Probability Analysis
+```bash
+# Theoretical recurrence analysis (FIPS 204 Appendix C)
+python3 scripts/sample_in_ball_bounds.py
+
+# Monte Carlo empirical simulation (1,000,000 trials)
+python3 scripts/sim_sample_in_ball.py
+```
+
 ## Benchmark Results
+
+Target period: 5.0 ns (200 MHz) with Nangate 45nm standard cell library.
 
 | Module | Cells | Area ($\mu\text{m}^2$) | Critical Path (ns) | Worst Slack (ns) | WNS / TNS (ns) |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| `SampleInBall` | 10,990 | 14,050.918 | 1.28 | 3.68 | 0.000 / 0.000 |
+| `SampleInBall` | 11,607 | 14,694.372 | 1.24 | 3.72 | 0.000 / 0.000 |

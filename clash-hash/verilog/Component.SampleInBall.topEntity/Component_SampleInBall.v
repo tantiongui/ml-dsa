@@ -16,575 +16,586 @@ module Component_SampleInBall
       // Outputs
     , output wire  BUSY
     , output wire  DONE
+    , output wire  ERR
     , output wire  TREADY
     , output wire [511:0] POLY_OUT
     );
-  // src/Component/SampleInBall.hs:(106,1)-(109,22)
-  reg [653:0] c$ds_app_arg = {3'b000,651'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx};
-  reg [1168:0] c$case_alt;
-  wire [1168:0] c$case_alt_0;
-  wire [1168:0] c$case_alt_1;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:(134,1)-(137,22)
+  reg [661:0] c$ds_app_arg = {3'b000,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx};
+  reg [1177:0] c$case_alt;
+  wire [1177:0] c$case_alt_0;
+  wire [1177:0] c$case_alt_1;
+  wire [1177:0] c$case_alt_2;
+  // src/Component/SampleInBall.hs:66:1-13
   wire [511:0] poly;
-  wire [1168:0] result_0;
-  wire [1168:0] c$case_alt_2;
-  wire [1168:0] result_1;
-  wire [1168:0] c$case_alt_3;
-  // src/Component/SampleInBall.hs:57:1-13
+  wire [1177:0] result_0;
+  wire [1177:0] c$case_alt_3;
+  wire [1177:0] result_1;
+  wire [1177:0] c$case_alt_4;
+  wire [1177:0] c$case_alt_5;
+  // src/Component/SampleInBall.hs:66:1-13
   wire [511:0] \poly' ;
   wire [7:0] c$app_arg;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [1:0] \c$poly'_app_arg ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire  \c$poly'_case_scrut ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [63:0] \c$poly'_app_arg_0 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_0 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_1 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_2 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_3 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_4 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_5 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_6 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_7 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_8 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_9 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_10 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_11 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_12 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_13 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_14 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_15 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_16 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_17 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_18 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_19 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_20 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_21 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_22 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_23 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_24 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_25 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_26 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_27 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_28 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_29 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_30 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_31 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_32 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_33 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_34 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_35 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_36 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_37 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_38 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_39 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_40 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_41 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_42 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_43 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_44 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_45 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_46 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_47 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_48 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_49 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_50 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_51 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_52 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_53 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_54 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_55 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_56 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_57 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_58 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_59 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_60 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_61 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_62 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_63 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_64 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_65 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_66 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_67 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_68 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_69 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_70 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_71 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_72 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_73 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_74 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_75 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_76 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_77 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_78 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_79 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_80 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_81 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_82 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_83 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_84 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_85 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_86 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_87 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_88 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_89 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_90 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_91 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_92 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_93 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_94 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_95 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_96 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_97 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_98 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_99 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_100 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_101 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_102 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_103 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_104 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_105 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_106 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_107 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_108 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_109 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_110 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_111 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_112 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_113 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_114 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_115 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_116 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_117 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_118 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_119 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_120 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_121 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_122 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_123 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_124 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_125 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_126 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_127 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_128 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_129 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_130 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_131 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_132 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_133 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_134 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_135 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_136 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_137 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_138 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_139 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_140 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_141 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_142 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_143 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_144 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_145 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_146 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_147 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_148 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_149 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_150 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_151 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_152 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_153 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_154 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_155 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_156 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_157 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_158 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_159 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_160 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_161 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_162 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_163 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_164 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_165 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_166 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_167 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_168 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_169 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_170 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_171 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_172 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_173 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_174 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_175 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_176 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_177 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_178 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_179 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_180 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_181 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_182 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_183 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_184 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_185 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_186 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_187 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_188 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_189 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_190 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_191 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_192 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_193 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_194 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_195 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_196 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_197 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_198 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_199 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_200 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_201 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_202 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_203 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_204 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_205 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_206 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_207 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_208 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_209 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_210 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_211 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_212 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_213 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_214 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_215 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_216 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_217 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_218 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_219 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_220 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_221 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_222 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_223 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_224 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_225 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_226 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_227 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_228 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_229 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_230 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_231 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_232 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_233 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_234 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_235 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_236 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_237 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_238 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_239 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_240 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_241 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_242 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_243 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_244 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_245 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_246 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_247 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_248 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_249 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_250 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_251 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_252 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_253 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_254 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [1:0] \c$poly'_case_alt_255 ;
+  wire [1177:0] c$case_alt_6;
   wire  c$case_scrut;
-  // src/Component/SampleInBall.hs:57:1-13
+  wire  c$case_scrut_0;
+  // src/Component/SampleInBall.hs:66:1-13
+  wire [7:0] \byteCount' ;
+  // src/Component/SampleInBall.hs:66:1-13
+  wire [7:0] byteCount;
+  // src/Component/SampleInBall.hs:66:1-13
   wire [63:0] signReg;
   wire [2:0] c$app_arg_0;
-  wire [1168:0] c$case_alt_4;
-  // src/Component/SampleInBall.hs:57:1-13
+  wire [1177:0] c$case_alt_7;
+  // src/Component/SampleInBall.hs:66:1-13
+  wire [7:0] byteCount_0;
+  // src/Component/SampleInBall.hs:66:1-13
   wire [511:0] poly_0;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [63:0] signReg_0;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [7:0] i;
-  wire [1168:0] c$case_alt_5;
-  // src/Component/SampleInBall.hs:57:1-13
+  wire [1177:0] c$case_alt_8;
+  // src/Component/SampleInBall.hs:66:1-13
   wire signed [63:0] \c$poly'_case_scrut_0 ;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [7:0] j;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire signed [63:0] c$j_app_arg;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   reg [7:0] c$j_case_alt;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [7:0] i_0;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [2:0] byteIdx;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [511:0] poly_1;
   wire [63:0] c$restI0_case_scrut;
-  // src/Component/SampleInBall.hs:57:1-13
+  // src/Component/SampleInBall.hs:66:1-13
   wire [63:0] byteBuf;
   wire [66:0] eta;
   wire [511:0] c$vec;
-  wire [7:0] c$i_11;
+  wire [7:0] c$i_13;
   wire [63:0] c$vec_0;
   wire signed [63:0] \c$poly'_case_alt_selection_1 ;
   wire signed [63:0] \c$poly'_case_alt_selection_0 ;
@@ -1101,7 +1112,7 @@ module Component_SampleInBall
   wire signed [63:0] \c$poly'_case_alt_selection_769 ;
   wire signed [63:0] c$j_case_alt_selection_1;
   wire signed [63:0] c$j_case_alt_selection_0;
-  wire [514:0] result;
+  wire [515:0] result;
 
   assign eta = {START,   {STREAM_IN_TDATA,
                           STREAM_IN_TVALID,   STREAM_IN_TLAST}};
@@ -1109,52 +1120,64 @@ module Component_SampleInBall
   // register begin
   always @(posedge CLK or  posedge  RST) begin : c$ds_app_arg_register
     if ( RST) begin
-      c$ds_app_arg <= {3'b000,651'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx};
+      c$ds_app_arg <= {3'b000,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx};
     end else if (EN) begin
-      c$ds_app_arg <= c$case_alt[1168:515];
+      c$ds_app_arg <= c$case_alt[1177:516];
     end
   end
   // register end
 
-  assign result = c$case_alt[514:0];
+  assign result = c$case_alt[515:0];
 
   always @(*) begin
-    case(c$ds_app_arg[653:651])
-      3'b000 : c$case_alt = c$case_alt_1;
-      3'b001 : c$case_alt = c$case_alt_5;
-      3'b010 : c$case_alt = c$case_alt_4;
+    case(c$ds_app_arg[661:659])
+      3'b000 : c$case_alt = c$case_alt_2;
+      3'b001 : c$case_alt = c$case_alt_8;
+      3'b010 : c$case_alt = c$case_alt_7;
       3'b011 : c$case_alt = result_0;
+      3'b100 : c$case_alt = c$case_alt_1;
       default : c$case_alt = c$case_alt_0;
     endcase
   end
 
-  assign c$case_alt_0 = eta[66:66] ? {{3'b001,651'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                      {1'b1,   1'b0,   1'b1,
+  assign c$case_alt_0 = eta[66:66] ? {{3'b001,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                      {1'b1,   1'b0,   1'b0,   1'b1,
+                                       {256 {2'b00}}}} : {{3'b101,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                                          {1'b0,   1'b1,   1'b1,   1'b0,
+                                                           {256 {2'b00}}}};
+
+  assign c$case_alt_1 = eta[66:66] ? {{3'b001,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                      {1'b1,   1'b0,   1'b0,   1'b1,
                                        {256 {2'b00}}}} : {c$ds_app_arg,   {1'b0,
-                                                                           1'b1,   1'b0,   poly}};
+                                                                           1'b1,   1'b0,   1'b0,   poly}};
 
-  assign c$case_alt_1 = eta[66:66] ? {{3'b001,651'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                      {1'b1,   1'b0,   1'b1,
-                                       {256 {2'b00}}}} : {{3'b000,651'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                                          {1'b0,   1'b0,   1'b0,   {256 {2'b00}}}};
+  assign c$case_alt_2 = eta[66:66] ? {{3'b001,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                      {1'b1,   1'b0,   1'b0,   1'b1,
+                                       {256 {2'b00}}}} : {{3'b000,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                                          {1'b0,   1'b0,   1'b0,   1'b0,
+                                                           {256 {2'b00}}}};
 
-  assign poly = c$ds_app_arg[650:139];
+  assign poly = c$ds_app_arg[658:147];
 
-  assign result_0 = (j <= i_0) ? result_1 : c$case_alt_2;
+  assign result_0 = (j <= i_0) ? result_1 : c$case_alt_3;
 
-  assign c$case_alt_2 = c$case_scrut ? {{3'b010,i_0,signReg,poly_1,67'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                        {1'b1,   1'b0,   1'b1,
-                                         {256 {2'b00}}}} : {{3'b011,i_0,signReg,c$app_arg_0,byteBuf,poly_1},
-                                                            {1'b1,   1'b0,   1'b0,   {256 {2'b00}}}};
+  assign c$case_alt_3 = c$case_scrut ? {{3'b101,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                        {1'b0,   1'b1,   1'b1,   1'b0,
+                                         {256 {2'b00}}}} : c$case_alt_6;
 
-  assign result_1 = (i_0 == 8'd255) ? {{3'b100,\poly' ,139'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                       {1'b0,   1'b1,   1'b0,
-                                        \poly' }} : c$case_alt_3;
+  assign result_1 = (i_0 == 8'd255) ? {{3'b100,\poly' ,147'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                       {1'b0,   1'b1,   1'b0,   1'b0,
+                                        \poly' }} : c$case_alt_4;
 
-  assign c$case_alt_3 = c$case_scrut ? {{3'b010,c$app_arg,signReg,\poly' ,67'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                        {1'b1,   1'b0,   1'b1,
-                                         {256 {2'b00}}}} : {{3'b011,c$app_arg,signReg,c$app_arg_0,byteBuf,\poly' },
-                                                            {1'b1,   1'b0,   1'b0,   {256 {2'b00}}}};
+  assign c$case_alt_4 = c$case_scrut ? {{3'b101,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                        {1'b0,   1'b1,   1'b1,   1'b0,
+                                         {256 {2'b00}}}} : c$case_alt_5;
+
+  assign c$case_alt_5 = c$case_scrut_0 ? {{3'b010,c$app_arg,signReg,\poly' ,\byteCount' ,67'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                          {1'b1,   1'b0,   1'b0,   1'b1,
+                                           {256 {2'b00}}}} : {{3'b011,c$app_arg,signReg,c$app_arg_0,byteBuf,\poly' ,\byteCount' },
+                                                              {1'b1,   1'b0,   1'b0,   1'b0,
+                                                               {256 {2'b00}}}};
 
   assign c$vec = {\c$poly'_case_alt_254 ,
                   \c$poly'_case_alt_253 ,
@@ -1420,7 +1443,7 @@ module Component_SampleInBall
 
   assign \c$poly'_app_arg  = \c$poly'_case_scrut  ? 2'b11 : 2'b01;
 
-  assign c$i_11 = (i_0 - 8'd217);
+  assign c$i_13 = (i_0 - 8'd217);
 
   // index begin
   wire  vecArray [0:64-1];
@@ -1430,7 +1453,7 @@ module Component_SampleInBall
     assign vecArray[(64-1)-i_2] = \c$poly'_app_arg_0 [i_2*1+:1];
   end
   endgenerate
-  assign \c$poly'_case_scrut  = vecArray[($unsigned({{(64-8) {1'b0}},c$i_11}))];
+  assign \c$poly'_case_scrut  = vecArray[($unsigned({{(64-8) {1'b0}},c$i_13}))];
   // index end
 
   assign c$vec_0 = (signReg);
@@ -4530,27 +4553,42 @@ module Component_SampleInBall
     endcase
   end
 
-  assign c$case_scrut = byteIdx == 3'd7;
+  assign c$case_alt_6 = c$case_scrut_0 ? {{3'b010,i_0,signReg,poly_1,\byteCount' ,67'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                          {1'b1,   1'b0,   1'b0,   1'b1,
+                                           {256 {2'b00}}}} : {{3'b011,i_0,signReg,c$app_arg_0,byteBuf,poly_1,\byteCount' },
+                                                              {1'b1,   1'b0,   1'b0,   1'b0,
+                                                               {256 {2'b00}}}};
 
-  assign signReg = c$ds_app_arg[642:579];
+  assign c$case_scrut = \byteCount'  >= 8'd221;
+
+  assign c$case_scrut_0 = byteIdx == 3'd7;
+
+  assign \byteCount'  = byteCount + 8'd1;
+
+  assign byteCount = c$ds_app_arg[7:0];
+
+  assign signReg = c$ds_app_arg[650:587];
 
   assign c$app_arg_0 = byteIdx + 3'd1;
 
-  assign c$case_alt_4 = eta[1:1] ? {{3'b011,i,signReg_0,3'd0,eta[65:2],poly_0},
-                                    {1'b1,   1'b0,   1'b0,
+  assign c$case_alt_7 = eta[1:1] ? {{3'b011,i,signReg_0,3'd0,eta[65:2],poly_0,byteCount_0},
+                                    {1'b1,   1'b0,   1'b0,   1'b0,
                                      {256 {2'b00}}}} : {c$ds_app_arg,   {1'b1,
-                                                                         1'b0,   1'b1,   {256 {2'b00}}}};
+                                                                         1'b0,   1'b0,   1'b1,   {256 {2'b00}}}};
 
-  assign poly_0 = c$ds_app_arg[578:67];
+  assign byteCount_0 = c$ds_app_arg[74:67];
 
-  assign signReg_0 = c$ds_app_arg[642:579];
+  assign poly_0 = c$ds_app_arg[586:75];
 
-  assign i = c$ds_app_arg[650:643];
+  assign signReg_0 = c$ds_app_arg[650:587];
 
-  assign c$case_alt_5 = eta[1:1] ? {{3'b010,8'd217,eta[65:2],{256 {2'b00}},67'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                    {1'b1,   1'b0,   1'b1,
-                                     {256 {2'b00}}}} : {{3'b001,651'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
-                                                        {1'b1,   1'b0,   1'b1,   {256 {2'b00}}}};
+  assign i = c$ds_app_arg[658:651];
+
+  assign c$case_alt_8 = eta[1:1] ? {{3'b010,8'd217,eta[65:2],{256 {2'b00}},8'd8,67'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                    {1'b1,   1'b0,   1'b0,   1'b1,
+                                     {256 {2'b00}}}} : {{3'b001,659'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx},
+                                                        {1'b1,   1'b0,   1'b0,   1'b1,
+                                                         {256 {2'b00}}}};
 
   assign \c$poly'_case_scrut_0  = $unsigned({{(64-8) {1'b0}},j});
 
@@ -4576,19 +4614,21 @@ module Component_SampleInBall
     endcase
   end
 
-  assign i_0 = c$ds_app_arg[650:643];
+  assign i_0 = c$ds_app_arg[658:651];
 
-  assign byteIdx = c$ds_app_arg[578:576];
+  assign byteIdx = c$ds_app_arg[586:584];
 
-  assign poly_1 = c$ds_app_arg[511:0];
+  assign poly_1 = c$ds_app_arg[519:8];
 
   assign c$restI0_case_scrut = byteBuf;
 
-  assign byteBuf = c$ds_app_arg[575:512];
+  assign byteBuf = c$ds_app_arg[583:520];
 
-  assign BUSY = result[514:514];
+  assign BUSY = result[515:515];
 
-  assign DONE = result[513:513];
+  assign DONE = result[514:514];
+
+  assign ERR = result[513:513];
 
   assign TREADY = result[512:512];
 
