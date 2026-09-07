@@ -10,6 +10,9 @@ Pure Haskell reference models and Clash HDL hardware implementations for NIST FI
 - **CoeffFromHalfByte (Algorithm 15)**
   - Source: `clash-hash/src/Component/CoeffFromHalfByte.hs`
   - Summary: Converts 4-bit nibbles to polynomial coefficients in range $[-\eta, \eta]$ with rejection sampling for ML-DSA-44, 65, and 87.
+- **Hardware Metaprogramming & Generators**
+  - Source: `clash-hash/src/TH.hs`
+  - Summary: Template Haskell utilities for compile-time static circuit expansion in Clash (`mkRead2` for bit-slice multiplexers and `mkPopPair` for multi-stage FIFO buffer pattern matching in `SampleNTT6`).
 
 ## Getting Started
 
@@ -33,6 +36,9 @@ python3 scripts/synth.py SampleInBall
 
 # Synthesize CoeffFromHalfByte
 python3 scripts/synth.py CoeffFromHalfByte
+
+# Synthesize SampleNTT6 (SN-O24-L6)
+python3 scripts/synth.py SN-O24-L6
 ```
 
 ### 3. Run Benchmark

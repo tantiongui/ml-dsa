@@ -22,7 +22,7 @@ import AXI4Stream
 import Clash.Prelude hiding (permute, tlast)
 import Component.SampleNTT.Common (absorb34, screenCoeff96)
 import Permutation qualified
-import TH (mkRead)
+import TH (mkRead, mkPopPair)
 
 data Buffer
   = Buffer0
@@ -78,16 +78,7 @@ screenCandidates chunk =
     Valid0
     (screenCoeff96 chunk)
 
-popPair :: Buffer -> (BitVector 24, Buffer)
-popPair (Buffer2 a b) = (b ++# a, Buffer0)
-popPair (Buffer3 a b c) = (b ++# a, Buffer1 c)
-popPair (Buffer4 a b c d) = (b ++# a, Buffer2 c d)
-popPair (Buffer5 a b c d e) = (b ++# a, Buffer3 c d e)
-popPair (Buffer6 a b c d e f) = (b ++# a, Buffer4 c d e f)
-popPair (Buffer7 a b c d e f g) = (b ++# a, Buffer5 c d e f g)
-popPair (Buffer8 a b c d e f g h) = (b ++# a, Buffer6 c d e f g h)
-popPair (Buffer9 a b c d e f g h i) = (b ++# a, Buffer7 c d e f g h i)
-popPair _ = error "Component.SampleNTT6.popPair: buffer underflow"
+$(mkPopPair 2 9)
 
 step ::
   State ->

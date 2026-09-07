@@ -1,7 +1,11 @@
-module TH (mkWrite, mkRead, mkMap) where
+module TH (mkWrite, mkRead, mkRead2, mkPopPair, mkMap) where
 
+
+import Clash.Prelude (BitVector, Index, SNat (..), slice, (++#))
 import Language.Haskell.TH
+import Language.Haskell.TH.Lib
 import Prelude
+
 
 -- | Generate a customizable write function with pattern-matched cases
 -- Usage: $(mkWrite "write" 64 25)
@@ -115,6 +119,31 @@ mkRead funcName stateSize slices = do
 
   pure [typeSig, FunD funcNameN allClauses]
 
+
+mkRead2 :: String -> Integer -> [(Integer, Integer, Integer)] -> Q [Dec]
+mkRead2 funcName stateSize slices = do
+  let laneSize = case slices of
+        ((_, _, ls) : _) -> ls
+        [] -> error "mkRead2: empty slices list"
+      numCases = toInteger (length slices)
+      nat n = litT (numTyLit n)
+  funcTy <- [t| BitVector $(nat stateSize) -> Index $(nat numCases) -> BitVector $(nat laneSize) |]
+  let typeSig = SigD (mkName funcName) funcTy  
+  stateName <- newName "state"
+
+  let snatE n = appTypeE [| SNat |] (nat n)
+
+  let mkClause (idx, start, ls) = do
+        let upper = start + ls - 1
+            pat = LitP (IntegerL idx)
+        body <- [| slice $(snatE upper) $(snatE start) $(varE stateName) |]
+        pure $ Clause [VarP stateName, pat] (NormalB body) []
+
+  allClauses <- mapM mkClause slices
+  pure [typeSig, FunD (mkName funcName) allClauses]
+
+
+
 -- | Generate a map function that applies an operation to a slice of a BitVector
 --
 -- Parameters:
@@ -201,3 +230,36 @@ mkMap funcName opName stateSize slices = do
       allClauses = map mkClause slices ++ [wildcardClause]
 
   pure [typeSig, FunD funcNameN allClauses]
+
+
+mkPopPair :: Integer -> Integer -> Q [Dec]
+mkPopPair minBuf maxBuf = do
+  let funcName = mkName "popPair"
+
+  let mkClause n = do
+        vars <- mapM (\i -> newName ("x" ++ show i)) [1 .. n]
+        let (v1 : v2 : rest) = vars
+
+        -- 1. LHS: Buffer<n> x1 x2 ... xn
+        let pat = conP (mkName ("Buffer" ++ show n)) (map varP vars)
+
+        -- 2. RHS: (x2 ++# x1, Buffer<n-2> rest...)
+        let pair = [| $(varE v2) ++# $(varE v1) |]
+            restBufName = mkName ("Buffer" ++ show (n - 2))
+            restBuf = foldl appE (conE restBufName) (map varE rest)
+
+        p <- pat
+        b <- [| ($pair, $restBuf) |]
+        pure $ Clause [p] (NormalB b) []
+
+  errBody <- [| error "Component.SampleNTT6.popPair: buffer underflow" |]
+  let fallbackClause = Clause [WildP] (NormalB errBody) []
+
+  bufClauses <- mapM mkClause [minBuf .. maxBuf]
+  let allClauses = bufClauses ++ [fallbackClause]
+  
+  let bufferT = conT (mkName "Buffer")
+  typeSig <- sigD funcName [t| $(bufferT) -> (BitVector 24, $(bufferT)) |]
+
+  pure [typeSig, FunD funcName allClauses]
+

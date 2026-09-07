@@ -30,7 +30,7 @@ import Clash.Prelude hiding (tlast)
 import Parameter
 import Permutation qualified
 import Sponge.NonPipelinedN256 (complementAt)
-import TH (mkRead)
+import TH (mkRead, mkRead2)
 
 data Phase
   = Absorb
@@ -63,7 +63,7 @@ absorb32WithMLKEM mlkem msg256 =
   absorb272WithMLKEM mlkem ((0 :: BitVector 16) ++# msg256)
 
 -- | Squeeze phase bit slicing helper: extracts 256-bit chunks from the Keccak state.
-$( mkRead
+$( mkRead2
      "squeezeSlice"
      1600
      [ (0, 0, 256),
