@@ -6,6 +6,7 @@ Pure Haskell reference models and Clash HDL hardware implementations for NIST FI
 
 - **SampleInBall (Algorithm 29)**
   - Source: `clash-hash/src/Component/SampleInBall.hs`
+  - Tests: `clash-hash/tests/Test/SampleInBall.hs` (52 unit tests: 50 official NIST ML-DSA-44 KAT vectors from `c_2.txt` + 2 boundary/security tests)
   - Summary: Generates 256-degree polynomials with Hamming weight $\tau = 39$ ($\pm 1$ non-zero coefficients) using a Mealy state machine. Conforms to NIST FIPS 204 Appendix C loop bounds with cutoff timeout and intermediate state zeroization.
 - **CoeffFromHalfByte (Algorithm 15)**
   - Source: `clash-hash/src/Component/CoeffFromHalfByte.hs`
@@ -25,7 +26,11 @@ export PATH="$HOME/.ghcup/bin:$PATH"
 
 ### 1. Run Tests
 ```bash
+# Run all tests in repository
 stack test
+
+# Run SampleInBall unit tests specifically (0.2s)
+stack test --test-arguments="-p SampleInBall"
 ```
 
 ### 2. Verilog Synthesis
