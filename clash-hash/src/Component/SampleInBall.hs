@@ -87,9 +87,11 @@ sampleInBallT state Input{..} = case state of
 
   ProcessByte i signReg byteIdx byteBuf poly byteCount ->
     let bytes        = unpack byteBuf :: Vec 8 (Unsigned 8)
-        signs        = unpack signReg :: Vec 64 Bool
+        signBytes    = unpack signReg :: Vec 8 (Unsigned 8)
         j            = fromIntegral (bytes !! byteIdx) :: Index 256
-        signBit      = signs !! (i - 217)
+        k            = fromIntegral (i - 217) :: Int
+        signByte     = signBytes !! (fromIntegral (k `div` 8) :: Index 8)
+        signBit      = testBit signByte (k `mod` 8)
         signVal      = if signBit then 3 else 1 :: BitVector 2
         byteCount'   = byteCount + 1
         limitReached = byteCount' >= maxBytesLimit

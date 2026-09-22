@@ -5,7 +5,8 @@
 -- |
 -- Module      : Test.SampleInBall
 -- Description : Unit Tests for Component.SampleInBall (NIST FIPS 204 Algorithm 29)
---               Driven by Official NIST ML-DSA-44 Known Answer Tests (c_2.txt)
+--               Driven by Official NIST ML-DSA-44 Known Answer Tests (c_2.txt),
+--               Point-wise Bit-exact Verification against Software Reference Model,
 --               and FIPS 204 Appendix C Security Cutoff requirements.
 module Test.SampleInBall (spec) where
 
@@ -18,6 +19,7 @@ import Data.Foldable (for_)
 import Data.Word (Word8)
 import Reference.Crypton (shake256)
 import Test.Hspec (Spec, describe, it, shouldBe)
+import Test.Reference.SampleInBall qualified as Reference
 import Prelude qualified as P
 
 -- | Complete unit test suite for SampleInBall
@@ -28,13 +30,13 @@ spec = describe "SampleInBall" $ do
       -- 64-bit signs beat: all zeros (positive signs)
       let signBeat = Input False (AXI4Stream 0 True False)
           -- Candidate bytes: 0..38 in order
-          -- Packed big-endian into 64-bit beats
           candBytes = [0 .. 38 :: Word8]
           candWords = packChunks candBytes
           candBeats = P.map (\w -> Input False (AXI4Stream w True False)) candWords
           out = runSampleInBallSim (signBeat : candBeats)
           poly = polyOut out
           nonZeros = [(i, poly !! i) | i <- [0 .. 255], poly !! i /= 0]
+          expectedPoly = Reference.run 0 candBytes
 
       done out `shouldBe` True
       err out `shouldBe` False
@@ -42,6 +44,8 @@ spec = describe "SampleInBall" $ do
       -- First 39 positions must be exactly 1 (encoded as 0b01)
       P.map P.fst nonZeros `shouldBe` [0 .. 38]
       P.all (\(_, c) -> c == 1) nonZeros `shouldBe` True
+      -- Point-wise check against software model
+      poly `shouldBe` expectedPoly
 
   describe "FIPS 204 Appendix C Security & Cutoff" $ do
     it "triggers cutoff at 221 bytes and clears polyOut on degenerate 0xFF stream" $ do
@@ -59,10 +63,10 @@ spec = describe "SampleInBall" $ do
       -- Verify hardware security zeroization: all coefficients must be 0
       P.null nonZeros `shouldBe` True
 
-  describe "Official NIST ML-DSA-44 KAT Tests (c_2.txt - 50 vectors)" $ do
+  describe "Official NIST ML-DSA-44 KAT Tests (c_2.txt - Point-wise Bit-exact Verification)" $ do
     for_ (P.zip [1 :: P.Int ..] katSeeds) $ \(idx, seedHex) ->
-      it ("KAT Vector #" P.++ P.show idx P.++ " (" P.++ P.take 16 seedHex P.++ "...)") $ do
-        let out = simulateKat seedHex
+      it ("KAT Vector #" P.++ P.show idx P.++ " (" P.++ P.take 16 seedHex P.++ "...): 100% point-wise match") $ do
+        let (out, expectedPoly) = simulateKatWithReference seedHex
             poly = polyOut out
             nonZeroCoeffs = [c | c <- toList poly, c /= 0]
             sqrdNorm = P.sum [if c == 0 then 0 else (1 :: P.Int) | c <- toList poly]
@@ -71,12 +75,12 @@ spec = describe "SampleInBall" $ do
         err out `shouldBe` False
         P.length nonZeroCoeffs `shouldBe` 39
         sqrdNorm `shouldBe` 39
-        -- All non-zero coefficients must be either +1 (0b01) or -1 (0b11 = 3)
-        P.all (\c -> c == 1 || c == 3) nonZeroCoeffs `shouldBe` True
+        -- POINT-WISE BIT-EXACT COMPARISON: All 256 coefficients must match reference software model!
+        poly `shouldBe` expectedPoly
 
--- | Execute FSM simulation for a given KAT seed
-simulateKat :: P.String -> Output
-simulateKat seedHex =
+-- | Execute FSM simulation and software reference model for a given KAT seed
+simulateKatWithReference :: P.String -> (Output, Vec 256 (BitVector 2))
+simulateKatWithReference seedHex =
   let seedBytes = hexToBS seedHex
       -- Squeeze 200 bytes with SHAKE-256 (NIST Table 3 maximum bound is 221 bytes)
       shakeOut = shake256 200 seedBytes
@@ -84,9 +88,22 @@ simulateKat seedHex =
       (signBytes, candBytes) = P.splitAt 8 shakeByteList
       signWord = packBytesBigEndian signBytes
       candWords = packChunks candBytes
+      
+      -- Software reference model output (using raw byte stream extracted from chunks)
+      expectedPoly = Reference.run signWord (unpackAll candWords)
+      
+      -- Hardware circuit simulation
       signBeat = Input False (AXI4Stream signWord True False)
       candBeats = P.map (\w -> Input False (AXI4Stream w True False)) candWords
-   in runSampleInBallSim (signBeat : candBeats)
+      hwOut = runSampleInBallSim (signBeat : candBeats)
+   in (hwOut, expectedPoly)
+
+-- | Unpack a list of 64-bit words to Word8 list matching hardware unpacking order
+unpackAll :: [BitVector 64] -> [Word8]
+unpackAll [] = []
+unpackAll (w : ws) =
+  let vec = unpack w :: Vec 8 (Unsigned 8)
+   in P.map fromIntegral (toList vec) P.++ unpackAll ws
 
 -- | Run SampleInBall Mealy machine cycle-by-cycle respecting AXI4-Stream tready
 runSampleInBallSim :: [Input] -> Output
