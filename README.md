@@ -11,6 +11,9 @@ Pure Haskell reference models and Clash HDL hardware implementations for NIST FI
 - **CoeffFromHalfByte (Algorithm 15)**
   - Source: `clash-hash/src/Component/CoeffFromHalfByte.hs`
   - Summary: Converts 4-bit nibbles to polynomial coefficients in range $[-\eta, \eta]$ with rejection sampling for ML-DSA-44, 65, and 87.
+- **RejBoundedPoly (Algorithm 31)**
+  - Source: `clash-hash/src/Component/RejBoundedPoly.hs`
+  - Summary: Samples 256-degree polynomials with coefficients bounded in $[-\eta, \eta]$ ($\eta \in \{2, 4\}$) using rejection sampling from a 64-bit AXI4-Stream. Conforms to NIST FIPS 204 Appendix C loop bounds (cutoff at 481 bytes) with intermediate state zeroization.
 - **Hardware Metaprogramming & Generators**
   - Source: `clash-hash/src/TH.hs`
   - Summary: Template Haskell utilities for compile-time static circuit expansion in Clash (`mkRead2` for bit-slice multiplexers and `mkPopPair` for multi-stage FIFO buffer pattern matching in `SampleNTT6`).
@@ -39,6 +42,9 @@ Generates Verilog/SystemVerilog from Clash and performs logic synthesis:
 # Synthesize SampleInBall
 python3 scripts/synth.py SampleInBall
 
+# Synthesize RejBoundedPoly
+python3 scripts/synth.py RejBoundedPoly
+
 # Synthesize CoeffFromHalfByte
 python3 scripts/synth.py CoeffFromHalfByte
 
@@ -49,7 +55,11 @@ python3 scripts/synth.py SN-O24-L6
 ### 3. Run Benchmark
 Runs the full pipeline (HDL gen, Yosys synthesis, OpenSTA timing):
 ```bash
+# Benchmark SampleInBall
 python3 scripts/bench.py SampleInBall
+
+# Benchmark RejBoundedPoly
+python3 scripts/bench.py RejBoundedPoly
 ```
 
 ### 4. Loop Bound & Probability Analysis
@@ -68,3 +78,4 @@ Target period: 5.0 ns (200 MHz) with Nangate 45nm standard cell library.
 | Module | Cells | Area ($\mu\text{m}^2$) | Critical Path (ns) | Worst Slack (ns) | WNS / TNS (ns) |
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | `SampleInBall` | 11,607 | 14,694.372 | 1.24 | 3.72 | 0.000 / 0.000 |
+| `RejBoundedPoly` | 15,218 | 20,854.134 | 1.37 | 3.59 | 0.000 / 0.000 |
