@@ -47,5 +47,6 @@
   "SN-O24-L6-X6": "Component.SampleNTT6.i272o24l6x6",
   "SN-O24-L6-X8": "Component.SampleNTT6.i272o24l6x8",
   "SampleInBall": "Component.SampleInBall.topEntity",
-  "CoeffFromHalfByte": "Component.CoeffFromHalfByte.topEntity"
+  "CoeffFromHalfByte": "Component.CoeffFromHalfByte.topEntity",
+  "RejBoundedPoly": "Component.RejBoundedPoly.topEntity"
 }

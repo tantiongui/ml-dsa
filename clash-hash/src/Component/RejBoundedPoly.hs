@@ -8,7 +8,7 @@
 -- Module      : Component.RejBoundedPoly
 -- Description : Hardware implementation of NIST FIPS 204 RejBoundedPoly (Algorithm 31)
 -- License     : MIT
--- Standard    : NIST FIPS 204 (ML-DSA), Algorithm 31 & Appendix C Table 3 (Loop Bounds)
+-- Standard    : NIST FIPS 204 (ML-DSA), Algorithm 31 & Appendix C (Loop Bounds)
 module Component.RejBoundedPoly
   ( Input (..),
     Output (..),
@@ -29,48 +29,39 @@ import Component.CoeffFromHalfByte (coeffFromHalfByte)
 maxBytesLimit :: Unsigned 10
 maxBytesLimit = 481
 
--- | Input signals for RejBoundedPoly hardware module
+-- | Input signals for RejBoundedPoly hardware module (connected to upstream SHAKE256 stream)
 data Input = Input
   { start    :: Bool
-  , eta      :: Unsigned 3        -- ^ Parameter eta: 2 (ML-DSA-44/87) or 4 (ML-DSA-65)
-  , streamIn :: AXI4Stream64      -- ^ Upstream 64-bit stream from SHAKE-256
+  , eta      :: Unsigned 3
+  , streamIn :: AXI4Stream64
   } deriving (Generic, NFDataX, Show, Eq)
 
 -- | Output signals for RejBoundedPoly hardware module
 data Output = Output
   { busy    :: Bool
   , done    :: Bool
-  , err     :: Bool               -- ^ Loop cutoff triggered (byteCount >= 481)
-  , tready  :: Bool               -- ^ AXI4-Stream backpressure
-  , polyOut :: Vec 256 (Signed 4) -- ^ Sampled polynomial coefficients in [-eta, eta]
+  , err     :: Bool
+  , tready  :: Bool
+  , polyOut :: Vec 256 (Signed 4)
   } deriving (Generic, NFDataX, Show, Eq)
 
 -- | Internal FSM State
 -- Tracks:
 --   1. Idle: Waiting for start signal
---   2. FetchBeat: Waiting for candidate 64-bit beat (8 bytes / 16 nibbles)
---   3. ProcessBeat: Processing buffered 8 bytes, evaluating z0 and z1 per byte
+--   2. FetchBeat: Waiting for candidate 64-bit beat (8 candidate bytes)
+--   3. ProcessBeat: Processing the 8 bytes loaded in buffer, evaluating z0 and z1 per byte
 --   4. Done: Sampling completed (j == 256), holding final polynomial output
 --   5. Error: Loop bound exceeded (cutoff >= 481 bytes), intermediate state destroyed
 data State
   = Idle
-  | FetchBeat
-      (Index 257)               -- ^ Current sampled coefficient count j (0..256)
-      (Vec 256 (Signed 4))      -- ^ Accumulating polynomial
-      (Unsigned 10)             -- ^ Consumed byte counter
-      (Unsigned 3)              -- ^ Active eta parameter
-  | ProcessBeat
-      (Index 257)               -- ^ Current coefficient index j
-      (Index 8)                 -- ^ Byte index within buffered beat (0..7)
-      (BitVector 64)            -- ^ Buffered 64-bit beat data
-      (Vec 256 (Signed 4))      -- ^ Accumulating polynomial
-      (Unsigned 10)             -- ^ Consumed byte counter
-      (Unsigned 3)              -- ^ Active eta parameter
+  | FetchBeat (Index 257) (Vec 256 (Signed 4)) (Unsigned 10) (Unsigned 3)
+  | ProcessBeat (Index 257) (Index 8) (BitVector 64) (Vec 256 (Signed 4)) (Unsigned 10) (Unsigned 3)
   | Done (Vec 256 (Signed 4))
   | Error
   deriving (Generic, NFDataX, Show, Eq)
 
 -- | Mealy transition function for RejBoundedPoly (Algorithm 31).
+-- Rejection samples 256 polynomial coefficients bounded in [-eta, eta].
 rejBoundedPolyT :: State -> Input -> (State, Output)
 rejBoundedPolyT state Input{..} = case state of
   Idle ->
@@ -109,6 +100,8 @@ rejBoundedPolyT state Input{..} = case state of
       if j2 == 256 then
         (Done poly2, Output False True False False poly2)
       else if limitReached then
+        -- Cutoff reached before completing 256 coefficients:
+        -- FIPS 204 Appendix C: Stop execution, return error, destroy intermediate results.
         (Error, Output False True True False (repeat 0))
       else if byteIdx == 7 then
         (FetchBeat j2 poly2 byteCount' currentEta, Output True False False True (repeat 0))
@@ -142,13 +135,32 @@ rejBoundedPoly = mealy rejBoundedPolyT Idle
           [ PortName "CLK",
             PortName "RST",
             PortName "EN",
-            PortName "IN"
+            PortProduct
+              ""
+              [ PortName "START",
+                PortName "ETA",
+                PortProduct
+                  "STREAM_IN"
+                  [ PortName "TDATA",
+                    PortName "TVALID",
+                    PortName "TLAST"
+                  ]
+              ]
           ],
-        t_output = PortName "OUT"
+        t_output =
+          PortProduct
+            ""
+            [ PortName "BUSY",
+              PortName "DONE",
+              PortName "ERR",
+              PortName "TREADY",
+              PortName "POLY_OUT"
+            ]
       }
   )
   #-}
 {-# NOINLINE topEntity #-}
+-- | Top Entity for Verilog / SystemVerilog compilation
 topEntity
   :: Clock System
   -> Reset System
